@@ -14,7 +14,7 @@ except:
     optionsFile = 'local.json'
 
 with open(optionsFile) as json_file:
-    options = loadJson(json_file)
+    options.update(loadJson(json_file))
 
 print(options['db_name'])
 print(datetime.now())
