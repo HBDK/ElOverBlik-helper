@@ -10,7 +10,7 @@
   "boot": "manual",
   "options": {
     "db_ip": "192.168.1.10",
-    "db_name": "pyexample",
+    "db_name": "eloversigt",
     "db_port": 8086,
     "sensorPrefix": "sensor.eloverblik_energy_"
   },
