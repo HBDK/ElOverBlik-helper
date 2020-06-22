@@ -2,7 +2,7 @@
   "name": "ElOverBlik-Helper",
   "version": "1",
   "slug": "folder",
-  "hassio_api": true,
+  "hassio_api": false,
   "homeassistant_api": true,
   "description": "long description",
   "arch": ["amd64","armhf","i386","armv7"],
