@@ -67,6 +67,10 @@ class Extractor:
         if not response.status_code == 200:
             print(response.url + " " + str(response.status_code))
         data = response.json()
+
+        if data['state'] == 'unknown':
+            raise ValueError('Value for ' + data['entity_id'] + ' was Unknown')
+
         data['attributes']['ingest time'] = datetime.now().timestamp()
 
         return {    "measurement": "Energy",
