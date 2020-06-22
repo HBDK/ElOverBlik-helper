@@ -9,13 +9,11 @@ Then open an issue on github
 
 ## Authors & contributors
 
-This add on is based on the example repository by [Franck Nijhof][frenck].
+This add on is based on the example repository by [Franck Nijhof](https://github.com/frenck).
 
 ## License
 
 MIT License
-
-Copyright (c) 2017-2020 Franck Nijhof
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
