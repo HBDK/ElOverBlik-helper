@@ -100,4 +100,4 @@ if not data[0]['tags']['Metering date'] == Einf.GetLatestMeterDate():
 else:
     print("Noope we GOood")
 
-Einf.Client.drop_database(options['db_name'])
+#Einf.Client.drop_database(options['db_name'])
