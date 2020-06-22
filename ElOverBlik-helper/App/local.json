@@ -1,0 +1,8 @@
+{
+  "db_ip": "influx host",
+  "db_name": "TestDB",
+  "db_port": 8086,
+  "sensorPrefix": "sensor.eloverblik_energy_",
+  "token": "",
+  "baseUrl": "http://Hass:8123/api/states/"
+}

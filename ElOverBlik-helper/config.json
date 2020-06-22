@@ -1,0 +1,23 @@
+{
+  "name": "ElOverBlik-Helper",
+  "version": "1",
+  "slug": "folder",
+  "hassio_api": true,
+  "homeassistant_api": true,
+  "description": "long description",
+  "arch": ["amd64","armhf","i386","armv7"],
+  "startup": "once",
+  "boot": "manual",
+  "options": {
+    "db_ip": "192.168.1.10",
+    "db_name": "pyexample",
+    "db_port": 8086,
+    "sensorPrefix": "sensor.eloverblik_energy_"
+  },
+  "schema": {
+    "db_ip": "str",
+    "db_name": "str",
+    "db_port": "int",
+    "sensorPrefix": "str"
+  }  
+}
