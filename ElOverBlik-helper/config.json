@@ -1,6 +1,6 @@
 {
   "name": "ElOverBlik-Helper",
-  "version": "0.4",
+  "version": "0.5",
   "slug": "eloverblik_helper",
   "hassio_api": false,
   "homeassistant_api": true,
