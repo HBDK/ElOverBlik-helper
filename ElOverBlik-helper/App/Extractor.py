@@ -18,7 +18,7 @@ class Extractor:
     def CreateMeasurement(self, hour):
         response = self.GetResponse(str(hour)+"_"+str(hour+1))
         if not response.status_code == 200:
-            warning(response.url + " " + str(response.status_code))
+            warning("Got status {} from {}".format(response.status_code,response.url))
         data = response.json()
 
         if data['state'] == 'unknown':
