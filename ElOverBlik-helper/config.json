@@ -12,12 +12,14 @@
     "db_ip": "192.168.1.10",
     "db_name": "eloversigt",
     "db_port": 8086,
-    "sensorPrefix": "sensor.eloverblik_energy_"
+    "sensorPrefix": "sensor.eloverblik_energy_",
+    "webhookUrl": ""
   },
   "schema": {
     "db_ip": "str",
     "db_name": "str",
     "db_port": "int",
-    "sensorPrefix": "str"
+    "sensorPrefix": "str",
+    "webhookUrl": "str"
   }  
 }

@@ -1,3 +1,5 @@
+from logging import warning, info
+
 class Einfluxer:
 
     def __init__(self, client, database):
@@ -16,7 +18,7 @@ class Einfluxer:
         return False
     
     def CreateDb(self):
-        print('Creating Database')
+        info('Creating Database')
         self.Client.create_database(self.Database)
 
     def GetLatestMeterDate(self):
@@ -24,6 +26,6 @@ class Einfluxer:
         try:
             returnString = result.raw['series'][0]['values'][0][-1]
         except:
-            print("no values! is this first time you run this?")
+            warning("no values! is this first time you run this?")
             returnString = ""
         return returnString

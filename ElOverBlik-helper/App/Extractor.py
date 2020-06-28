@@ -1,6 +1,6 @@
 from requests import get
 from datetime import datetime
-
+from logging import warning
 
 class Extractor:
     def __init__(self, baseUrl, sensorPrefix, token):
@@ -18,7 +18,7 @@ class Extractor:
     def CreateMeasurement(self, hour):
         response = self.GetResponse(str(hour)+"_"+str(hour+1))
         if not response.status_code == 200:
-            print(response.url + " " + str(response.status_code))
+            warning(response.url + " " + str(response.status_code))
         data = response.json()
 
         if data['state'] == 'unknown':
