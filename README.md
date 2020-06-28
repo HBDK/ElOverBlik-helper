@@ -1,6 +1,12 @@
 # Home Assistant Community Add-on: ElOverBlik-helper
 
-ElOverBlik-helper add-on Home-assistant(hassio) addon to ingest hourly energy uasge from the Eloverblik custom component into influx as a timeseries
+El overblik-helper is a Home-assistant(hassio) addon to ingest hourly energy uasge from the [El overblik](https://github.com/JonasPed/homeassistant-eloverblik) custom component into influx as a timeseries.
+
+you should be able to run this locally (docker or python) as well if you don't want to use the add-on.
+
+in the app folder there is a local.json file when not running as a hassio addon the script should automatically use that file instead (please keep in mind that some keys might be missing in it so you might have to add them yourself when you set up your env)
+
+feel free to open a issue if you need help with running this either as a add-on or locally.
 
 ## About
 
