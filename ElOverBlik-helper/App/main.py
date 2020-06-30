@@ -31,7 +31,7 @@ with open(optionsFile) as json_file:
 logging.info("Got {} for database".format(options['db_name']))
 
 client = InfluxDBClient(host=options['db_ip'], port=options['db_port'], username=options['db_user'], password=options['db_pass'])
-extractor = Extractor(options['baseUrl'],options['sensorPrefix'],options[TOKENKEY])
+extractor = Extractor(options['baseUrl'],options['sensorPrefix'],options[TOKENKEY], options['Timezone'])
 Einf = Einfluxer(client, options['db_name'])
 
 message = ""
