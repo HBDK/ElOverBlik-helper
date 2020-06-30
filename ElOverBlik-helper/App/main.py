@@ -61,4 +61,6 @@ if "webhookUrl" in options.keys() and not options["webhookUrl"] == "":
         logging.error("Could not post to: {}".format(options["webhookUrl"]))
     
 
-#Einf.Client.drop_database(options['db_name'])
+if optionsFile == 'local.json':
+    logging.warning("Removing database")
+    #Einf.Client.drop_database(options['db_name'])

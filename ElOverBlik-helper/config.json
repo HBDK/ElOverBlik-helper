@@ -16,7 +16,7 @@
     "db_pass": "",
     "sensorPrefix": "sensor.eloverblik_energy_",
     "webhookUrl": "",
-    "Timezone": "Europe/Amsterdam"
+    "Timezone": "Europe/Copenhagen"
   },
   "schema": {
     "db_ip": "str",

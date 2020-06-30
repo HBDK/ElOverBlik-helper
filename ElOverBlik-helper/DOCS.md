@@ -8,7 +8,8 @@
     "db_user": "", # username for database keep blank is no user
     "db_pass": "", # password for database keep blank is no user
     "sensorPrefix": "sensor.eloverblik_energy_", # the start of the name of the sensor to get values from (should not be nesseary to change)
-    "webhookUrl": "" # set to url to post a json object when done running.
+    "webhookUrl": "", # set to url to post a json object when done running.
+    "Timezone": "Europe/Copenhagen" # yeah i don't know why this would ever be anything else than Copenhagen
 ```
 ## using
 
