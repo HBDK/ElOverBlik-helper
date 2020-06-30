@@ -1,15 +1,17 @@
 from requests import get
 from datetime import datetime
 from logging import warning
+from pytz import timezone
 
 class Extractor:
-    def __init__(self, baseUrl, sensorPrefix, token):
+    def __init__(self, baseUrl, sensorPrefix, token, localTimezone):
         self.baseUrl = baseUrl
         self.sensorPrefix = sensorPrefix
         self.header = {
                     "Authorization": "Bearer " + token,
                     "content-type": "application/json",
                 }
+        self.localtimezone = timezone(localTimezone)
 
     def GetResponse(self, sensorPostfix):
         url = self.baseUrl + self.sensorPrefix + sensorPostfix
@@ -35,7 +37,7 @@ class Extractor:
 
     def GetTime(self, date, hour):
         date = date.split('-')
-        return datetime(int(date[0]), int(date[1]), int(date[2]), hour, 30)
+        return datetime(int(date[0]), int(date[1]), int(date[2]), hour, 30).astimezone(self.localtimezone)
 
     def GetMeasurements (self):
         data = []

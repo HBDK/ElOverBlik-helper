@@ -1,6 +1,6 @@
 {
   "name": "ElOverBlik-Helper",
-  "version": "0.7",
+  "version": "0.8",
   "slug": "eloverblik_helper",
   "hassio_api": false,
   "homeassistant_api": true,
@@ -15,7 +15,8 @@
     "db_user": "",
     "db_pass": "",
     "sensorPrefix": "sensor.eloverblik_energy_",
-    "webhookUrl": ""
+    "webhookUrl": "",
+    "Timezone": "Europe/Amsterdam"
   },
   "schema": {
     "db_ip": "str",
@@ -24,6 +25,7 @@
     "db_user": "str",
     "db_pass": "str",
     "sensorPrefix": "str",
-    "webhookUrl": "str"
+    "webhookUrl": "str",
+    "Timezone": "str"
   }  
 }
