@@ -26,8 +26,7 @@ class Extractor:
         if data['state'] == 'unknown':
             raise ValueError('Value for ' + data['entity_id'] + ' was Unknown')
 
-        data['attributes']['ingest time'] = datetime.now().timestamp()
-
+        data['attributes']['ingest time'] = datetime.now().astimezone(self.localtimezone).timestamp()
         return {    "measurement": "Energy",
                     "time": self.GetTime(data['attributes']['Metering date'],hour),
                     "tags": data['attributes'],

@@ -2,7 +2,10 @@
   "db_ip": "influx host",
   "db_name": "TestDB",
   "db_port": 8086,
+  "db_user": "",
+  "db_pass": "",
   "sensorPrefix": "sensor.eloverblik_energy_",
   "token": "",
-  "baseUrl": "http://Hass:8123/api/states/"
+  "baseUrl": "http://Hass:8123/api/states/",
+  "Timezone": "Europe/Copenhagen"
 }
