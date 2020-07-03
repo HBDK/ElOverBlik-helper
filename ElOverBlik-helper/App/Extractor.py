@@ -31,7 +31,7 @@ class Extractor:
                     "time": self.GetTime(data['attributes']['Metering date'],hour),
                     "tags": data['attributes'],
                     "fields": {
-                        "value": data['state']
+                        "value": float(data['state'])
                     }}
 
     def GetTime(self, date, hour):
