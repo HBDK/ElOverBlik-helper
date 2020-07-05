@@ -15,6 +15,7 @@
 
 the way i use this:
 
+* Optional: Import old data using the bulkloader before you set this up.
 * have a template sensor with the meter date from one of the sensors.
 * a automation trigger when the meter date sensor changes and starts this add on.
 * a automation listens for webhooks and notifies me when the script is done running.
@@ -73,6 +74,25 @@ SELECT "value" FROM "Energy" WHERE $timeFilter
   url: >-
     http://{grafana address}:{port}/d-solo/9wvMka8Wk/test?orgId=1&theme=light&panelId=4
   aspect_ratio: 60%
+```
+
+## Bulk loader
+OBS: this tool should only be used on new series, it doesn't check if there is already data in the series, so use series that doesn't exist yet.
+
+Make sure the dependencies are installed
+
+```
+pip3 install --trusted-host pypi.python.org -r requirements.txt
+```
+
+Get an export from [el overblik](https://eloverblik.dk) (make sure to export the amount used each hour)
+
+Place an export in the same folder as the bulk loader script and fill the Local.json file with the relevant options (use the same as in home assistant supervisor)
+
+Run the bulk loader
+
+```
+python3 bulkLoader.py
 ```
 
 ## Support

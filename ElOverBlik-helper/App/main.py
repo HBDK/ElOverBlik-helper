@@ -4,8 +4,9 @@ from Einfluxer import Einfluxer
 from influxdb import InfluxDBClient
 from datetime import datetime
 from requests import post
-from os import environ, path
+from os import environ
 from json import load as loadJson
+from sys import exc_info
 import logging
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=logging.INFO)
@@ -31,7 +32,7 @@ with open(optionsFile) as json_file:
 logging.info("Got {} for database".format(options['db_name']))
 
 client = InfluxDBClient(host=options['db_ip'], port=options['db_port'], username=options['db_user'], password=options['db_pass'])
-extractor = Extractor(options['baseUrl'],options['sensorPrefix'],options[TOKENKEY], options['Timezone'])
+extractor = Extractor(options['baseUrl'],options['sensorPrefix'],options[TOKENKEY], options['Timezone'],options['db_measurement_name'])
 Einf = Einfluxer(client, options['db_name'])
 
 message = ""
@@ -44,7 +45,13 @@ except ValueError:
 if message == "":
     if not data[0]['tags']['Metering date'] == Einf.GetLatestMeterDate():
         message = "Inserted data for: {}".format(data[0]['tags']['Metering date'])
-        Einf.Client.write_points(data)
+        try:
+            Einf.Client.write_points(data)
+        except:
+            e = exc_info()[0]
+            message = "Inserted data for: {}".format(data[0]['tags']['Metering date'])
+            message += "\nBut got:\n {}".format(e)
+            logging.error(e.with_traceback)
     else:
         message = "Ran but already had data for: {}".format(data[0]['tags']['Metering date'])
 
@@ -55,12 +62,10 @@ if "webhookUrl" in options.keys() and not options["webhookUrl"] == "":
     result["time"] = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
     result["options"] = options
     result["options"][TOKENKEY] = ""
-    try:
-        post(options["webhookUrl"], json=result)
-    except:
-        logging.error("Could not post to: {}".format(options["webhookUrl"]))
-    
-
-if optionsFile == 'local.json':
-    logging.warning("Removing database")
-    #Einf.Client.drop_database(options['db_name'])
+    if optionsFile != 'local.json':
+        try:
+            post(options["webhookUrl"], json=result)
+        except:
+            logging.error("Could not post to: {}".format(options["webhookUrl"]))
+    else:
+        logging.warning("skipping webhook post")

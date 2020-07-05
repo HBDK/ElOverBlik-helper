@@ -1,6 +1,6 @@
 {
   "name": "ElOverBlik-Helper",
-  "version": "0.10",
+  "version": "0.11",
   "slug": "eloverblik_helper",
   "hassio_api": false,
   "homeassistant_api": true,
@@ -11,6 +11,7 @@
   "options": {
     "db_ip": "192.168.1.10",
     "db_name": "eloversigt",
+    "db_measurement_name": "Energy",
     "db_port": 8086,
     "db_user": "",
     "db_pass": "",
@@ -21,6 +22,7 @@
   "schema": {
     "db_ip": "str",
     "db_name": "str",
+    "db_measurement_name": "str",
     "db_port": "int",
     "db_user": "str",
     "db_pass": "str",
