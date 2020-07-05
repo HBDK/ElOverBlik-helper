@@ -4,7 +4,7 @@ from logging import warning
 from pytz import timezone
 
 class Extractor:
-    def __init__(self, baseUrl, sensorPrefix, token, localTimezone):
+    def __init__(self, baseUrl, sensorPrefix, token, localTimezone, measurementName):
         self.baseUrl = baseUrl
         self.sensorPrefix = sensorPrefix
         self.header = {
@@ -12,6 +12,7 @@ class Extractor:
                     "content-type": "application/json",
                 }
         self.localtimezone = timezone(localTimezone)
+        self.measurementName = measurementName
 
     def GetResponse(self, sensorPostfix):
         url = self.baseUrl + self.sensorPrefix + sensorPostfix
@@ -26,8 +27,8 @@ class Extractor:
         if data['state'] == 'unknown':
             raise ValueError('Value for ' + data['entity_id'] + ' was Unknown')
 
-        data['attributes']['ingest time'] = datetime.now().astimezone(self.localtimezone).timestamp()
-        return {    "measurement": "Energy",
+        data['attributes']['ingest time'] = datetime.now().astimezone(self.localtimezone)
+        return {    "measurement": self.measurementName,
                     "time": self.GetTime(data['attributes']['Metering date'],hour),
                     "tags": data['attributes'],
                     "fields": {
@@ -36,7 +37,7 @@ class Extractor:
 
     def GetTime(self, date, hour):
         date = date.split('-')
-        return datetime(int(date[0]), int(date[1]), int(date[2]), hour, 30).astimezone(self.localtimezone)
+        return datetime(int(date[0]), int(date[1]), int(date[2]), hour, 59, 59).astimezone(self.localtimezone)
 
     def GetMeasurements (self):
         data = []

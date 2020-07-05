@@ -1,6 +1,7 @@
 {
   "db_ip": "influx host",
   "db_name": "TestDB",
+  "db_measurement_name": "Energy",
   "db_port": 8086,
   "db_user": "",
   "db_pass": "",
