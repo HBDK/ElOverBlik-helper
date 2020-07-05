@@ -1,6 +1,6 @@
 # Changelog
 
-OBS: Version 0.10 and 0.11 are not compatible with prior measurements so you have to insert data into a new measurement or drop existing data.
+OBS: Version 0.10 and 0.11 are not compatible with prior measurements so you have to insert data into a new series or drop existing data. (old data can be re inserted using the bulk loader)
 
 ## 0.10
 
@@ -12,3 +12,4 @@ OBS: Version 0.10 and 0.11 are not compatible with prior measurements so you hav
 - Ingest time changed from timestamp to datetime
 - Values are now inserted at the end of the hour instead of the middle
 - [Errors during insert are now handled and will be reported if webhooks are enabled](https://github.com/HBDK/ElOverBlik-helper/issues/8)
+- Added Bulk loader

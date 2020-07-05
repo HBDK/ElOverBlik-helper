@@ -6,7 +6,7 @@ from os import environ
 from json import load as loadJson
 import logging
 from pytz import timezone
-from datetime import datetime
+from datetime import datetime, timedelta
 
 options = {}
 optionsFile = '/data/options.json'
@@ -28,7 +28,7 @@ measurementName = options["db_measurement_name"]
 headers = []
 
 def get_time(input):
-    return datetime.strptime(input, "%Y-%m-%d %H.%M").astimezone(localtimezone)
+    return datetime.strptime(input, "%Y-%m-%d %H.%M").astimezone(localtimezone) + timedelta(minutes=59 ,seconds=59)
 
 def createPoint(row):
     tags = {}
