@@ -13,3 +13,13 @@ OBS: Version 0.10 and 0.11 are not compatible with prior measurements so you hav
 - Values are now inserted at the end of the hour instead of the middle
 - [Errors during insert are now handled and will be reported if webhooks are enabled](https://github.com/HBDK/ElOverBlik-helper/issues/8)
 - Added Bulk loader
+
+## 0.12
+
+added atributes:
+
+- Week Number
+- Year
+- day of week
+- Week and year
+- Month and year
