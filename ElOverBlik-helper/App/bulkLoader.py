@@ -44,6 +44,15 @@ def createPoint(row):
         tags["unit_of_measurement"] = tags["Måleenhed"]
     tags["Metering date"] = tags["Fra dato"].split(" ")[0]
 
+    time = get_time(tags["Fra dato"])
+
+    isoCalendar = time.isocalendar()
+
+    tags['Week Number'] = isoCalendar[1]
+    tags['Year'] = isoCalendar[0]
+    tags['day of week'] = isoCalendar[2]
+    tags['Week and year'] = str(isoCalendar[0]) + "-" + str(isoCalendar[1])
+
     return {    "measurement": measurementName,
                 "time": get_time(tags["Fra dato"]),
                 "tags": tags,

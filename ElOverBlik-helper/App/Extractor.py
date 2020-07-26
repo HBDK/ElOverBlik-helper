@@ -28,8 +28,17 @@ class Extractor:
             raise ValueError('Value for ' + data['entity_id'] + ' was Unknown')
 
         data['attributes']['ingest time'] = datetime.now().astimezone(self.localtimezone)
+        time = self.GetTime(data['attributes']['Metering date'],hour)
+
+        isoCalendar = time.isocalendar()
+
+        data['attributes']['Week Number'] = isoCalendar[1]
+        data['attributes']['Year'] = isoCalendar[0]
+        data['attributes']['day of week'] = isoCalendar[2]
+        data['attributes']['Week and year'] = str(isoCalendar[0]) + "-" + str(isoCalendar[1])
+
         return {    "measurement": self.measurementName,
-                    "time": self.GetTime(data['attributes']['Metering date'],hour),
+                    "time": time,
                     "tags": data['attributes'],
                     "fields": {
                         "value": float(data['state'])
