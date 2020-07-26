@@ -36,6 +36,7 @@ class Extractor:
         data['attributes']['Year'] = isoCalendar[0]
         data['attributes']['day of week'] = isoCalendar[2]
         data['attributes']['Week and year'] = str(isoCalendar[0]) + "-" + str(isoCalendar[1])
+        data['attributes']['Month and year'] = str(time.month) + "-" + str(time.year)
 
         return {    "measurement": self.measurementName,
                     "time": time,

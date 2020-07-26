@@ -52,6 +52,7 @@ def createPoint(row):
     tags['Year'] = isoCalendar[0]
     tags['day of week'] = isoCalendar[2]
     tags['Week and year'] = str(isoCalendar[0]) + "-" + str(isoCalendar[1])
+    tags['Month and year'] = str(time.month) + "-" + str(time.year)
 
     return {    "measurement": measurementName,
                 "time": get_time(tags["Fra dato"]),
