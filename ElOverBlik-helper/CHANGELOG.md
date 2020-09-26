@@ -23,3 +23,7 @@ added atributes:
 - day of week
 - Week and year
 - Month and year
+
+## 0.13
+
+add icon and fix description.
