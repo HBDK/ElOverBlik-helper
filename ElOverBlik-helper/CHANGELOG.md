@@ -26,4 +26,5 @@ added atributes:
 
 ## 0.13
 
-add icon and fix description.
+- add icon and fix description.
+- fix addon url

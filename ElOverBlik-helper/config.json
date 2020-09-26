@@ -4,6 +4,7 @@
   "slug": "eloverblik_helper",
   "hassio_api": false,
   "homeassistant_api": true,
+  "url": "https://github.com/HBDK/ElOverBlik-helper",
   "description": "A small tool for inserting Eloverblik data into influx",
   "arch": ["amd64","armhf","i386","armv7"],
   "startup": "once",
