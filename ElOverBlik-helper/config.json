@@ -17,6 +17,12 @@
     "db_user": "",
     "db_pass": "",
     "sensorPrefix": "sensor.eloverblik_energy_",
+    "sets": [
+      {
+        "sensorPrefix": "sensor.eloverblik_energy_",
+        "db_measurement_name": "Energy"
+      }
+    ],
     "webhookUrl": "",
     "Timezone": "Europe/Copenhagen"
   },
@@ -27,7 +33,13 @@
     "db_port": "int",
     "db_user": "str",
     "db_pass": "str",
-    "sensorPrefix": "str",
+    "sensorPrefix": "str?",
+    "sets": [
+      {
+        "sensorPrefix": "str?",
+        "db_measurement_name": "str?"
+      }
+    ],
     "webhookUrl": "str",
     "Timezone": "str"
   }  

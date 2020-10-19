@@ -21,8 +21,8 @@ class Einfluxer:
         info('Creating Database')
         self.Client.create_database(self.Database)
 
-    def GetLatestMeterDate(self):
-        result = self.Client.query('SELECT last("value"),"Metering date" FROM "' + self.Database + '"."autogen"."Energy"')
+    def GetLatestMeterDate(self, measurementName, friendlyName):
+        result = self.Client.query('SELECT last("value"),"Metering date" FROM "' + self.Database + '"."autogen"."'+ measurementName +'" WHERE ("friendly_name" = \'' + friendlyName + '\')')
         try:
             returnString = result.raw['series'][0]['values'][0][-1]
         except:

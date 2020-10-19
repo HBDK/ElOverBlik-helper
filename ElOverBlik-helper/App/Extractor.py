@@ -56,3 +56,20 @@ class Extractor:
             data.append(self.CreateMeasurement(i))
 
         return data
+
+class ExtractorBuilder:
+    def __init__(self, options):
+        self.token = options["token"]
+        self.options = options
+
+    def build(self):
+        Extractors = []
+
+        if "sets" in self.options:
+            for options in self.options["sets"]:
+                Extractors.append(Extractor(self.options['baseUrl'],options['sensorPrefix'],self.token, self.options['Timezone'],options['db_measurement_name']))
+
+        else:
+            Extractors.append(Extractor(self.options['baseUrl'],self.options['sensorPrefix'],self.token, self.options['Timezone'],self.options['db_measurement_name']))
+        
+        return Extractors
