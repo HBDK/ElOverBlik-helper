@@ -67,7 +67,7 @@ class ExtractorBuilder:
     def build(self):
         Extractors = []
 
-        if "sets" in self.options:
+        if "sets" in self.options and len(self.options["sets"]):
             for options in self.options["sets"]:
                 Extractors.append(Extractor(self.options['baseUrl'],options['sensorPrefix'],self.token, self.options['Timezone'],self.options['db_measurement_name'], options["name"]))
 

@@ -63,7 +63,7 @@ for extractor in extractors:
     cumulativeMessage += message
 
 if "webhookUrl" in options.keys() and not options["webhookUrl"] == "":
-    result["message"] = message
+    result["message"] = cumulativeMessage
     result["time"] = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
     result["options"] = options
     result["options"][TOKENKEY] = ""
