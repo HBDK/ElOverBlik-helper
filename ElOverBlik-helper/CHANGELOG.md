@@ -28,3 +28,7 @@ added atributes:
 
 - add icon and fix description.
 - fix addon url
+
+## 0.14
+
+- add support for multiple sets of measurements
