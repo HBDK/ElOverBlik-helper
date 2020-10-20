@@ -16,11 +16,10 @@
     "db_port": 8086,
     "db_user": "",
     "db_pass": "",
-    "sensorPrefix": "sensor.eloverblik_energy_",
     "sets": [
       {
-        "sensorPrefix": "sensor.eloverblik_energy_",
-        "db_measurement_name": "Energy"
+        "name": "Eloverblik Energy",
+        "sensorPrefix": "sensor.eloverblik_energy_"
       }
     ],
     "webhookUrl": "",
@@ -36,8 +35,8 @@
     "sensorPrefix": "str?",
     "sets": [
       {
-        "sensorPrefix": "str?",
-        "db_measurement_name": "str?"
+        "name": "str?",
+        "sensorPrefix": "str?" 
       }
     ],
     "webhookUrl": "str",
