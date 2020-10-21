@@ -31,4 +31,6 @@ added atributes:
 
 ## 0.14
 
+Will require exsisting users to add `sets: []` to the config.
+
 - add support for multiple sets of measurements
