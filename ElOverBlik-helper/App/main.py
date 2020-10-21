@@ -47,7 +47,8 @@ for extractor in extractors:
         message = "Got ValueError when fetching data from Home assistant, The sensor probably haven't fetched data yet."
 
     if message == "":
-        if not data[0]['tags']['Metering date'] == Einf.GetLatestMeterDate(extractor.measurementName,data[0]['tags']['friendly_name']):
+        
+        if not Einf.GotValuesForDate(data[0],extractor.measurementName,extractor.name):
             message = "Inserted data for: {}".format(data[0]['tags']['Metering date'])
             try:
                 Einf.Client.write_points(data)
