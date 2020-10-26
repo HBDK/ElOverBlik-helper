@@ -4,7 +4,7 @@ from logging import warning
 from pytz import timezone
 
 class Extractor:
-    def __init__(self, baseUrl, sensorPrefix, token, localTimezone, measurementName):
+    def __init__(self, baseUrl, sensorPrefix, token, localTimezone, measurementName, name):
         self.baseUrl = baseUrl
         self.sensorPrefix = sensorPrefix
         self.header = {
@@ -13,6 +13,7 @@ class Extractor:
                 }
         self.localtimezone = timezone(localTimezone)
         self.measurementName = measurementName
+        self.name = name
 
     def GetResponse(self, sensorPostfix):
         url = self.baseUrl + self.sensorPrefix + sensorPostfix
@@ -37,6 +38,7 @@ class Extractor:
         data['attributes']['day of week'] = isoCalendar[2]
         data['attributes']['Week and year'] = str(isoCalendar[0]) + "-" + str(isoCalendar[1])
         data['attributes']['Month and year'] = str(time.month) + "-" + str(time.year)
+        data['attributes']['Name'] = self.name
 
         return {    "measurement": self.measurementName,
                     "time": time,
@@ -56,3 +58,20 @@ class Extractor:
             data.append(self.CreateMeasurement(i))
 
         return data
+
+class ExtractorBuilder:
+    def __init__(self, options):
+        self.token = options["token"]
+        self.options = options
+
+    def build(self):
+        Extractors = []
+
+        if "sets" in self.options and len(self.options["sets"]):
+            for options in self.options["sets"]:
+                Extractors.append(Extractor(self.options['baseUrl'],options['sensorPrefix'],self.token, self.options['Timezone'],self.options['db_measurement_name'], options["name"]))
+
+        else:
+            Extractors.append(Extractor(self.options['baseUrl'],self.options['sensorPrefix'],self.token, self.options['Timezone'],self.options['db_measurement_name'],self.options['db_measurement_name']))
+        
+        return Extractors

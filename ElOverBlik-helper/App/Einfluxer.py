@@ -20,12 +20,8 @@ class Einfluxer:
     def CreateDb(self):
         info('Creating Database')
         self.Client.create_database(self.Database)
-
-    def GetLatestMeterDate(self):
-        result = self.Client.query('SELECT last("value"),"Metering date" FROM "' + self.Database + '"."autogen"."Energy"')
-        try:
-            returnString = result.raw['series'][0]['values'][0][-1]
-        except:
-            warning("no values! is this first time you run this?")
-            returnString = ""
-        return returnString
+    
+    def GotValuesForDate(self, data, measurementName, name):
+        query = 'SELECT last("value") FROM "' + self.Database + '"."autogen"."'+ measurementName +'" WHERE ("metering_date" = \'' + data["tags"]["metering_date"] + '\' AND ("Name" = \'' + name + '\' OR "Name" = \'\')) GROUP BY "Name"'
+        result = self.Client.query(query)
+        return len(result.raw['series']) > 0

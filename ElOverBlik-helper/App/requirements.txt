@@ -1,2 +1,2 @@
-influxdb
-pytz
+influxdb==5.3.0
+pytz==2020.1
