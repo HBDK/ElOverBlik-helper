@@ -33,7 +33,7 @@ logging.info("Got {} for database".format(options['db_name']))
 
 client = InfluxDBClient(host=options['db_ip'], port=options['db_port'], username=options['db_user'], password=options['db_pass'])
 extractors = ExtractorBuilder(options).build()
-Einf = Einfluxer(client, options['db_name'])
+Einf = Einfluxer(client, options['db_name'], options['db_retention_policy'])
 
 cumulativeMessage = ""
 
