@@ -51,7 +51,7 @@ for extractor in extractors:
         if not Einf.GotValuesForDate(data[0],extractor.measurementName,extractor.name):
             message = "Inserted data for: {}".format(data[0]['tags']['Metering date'])
             try:
-                Einf.Client.write_points(data)
+                Einf.Client.write_points(data, retention_policy=options['db_retention_policy'])
             except:
                 e = exc_info()[0]
                 message = "Inserted data for: {}".format(data[0]['tags']['Metering date'])
