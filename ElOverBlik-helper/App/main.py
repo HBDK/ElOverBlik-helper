@@ -33,7 +33,7 @@ logging.info("Got {} for database".format(options['db_name']))
 
 client = InfluxDBClient(host=options['db_ip'], port=options['db_port'], username=options['db_user'], password=options['db_pass'])
 extractors = ExtractorBuilder(options).build()
-Einf = Einfluxer(client, options['db_name'])
+Einf = Einfluxer(client, options['db_name'], options['db_retention_policy'])
 
 cumulativeMessage = ""
 
@@ -51,7 +51,7 @@ for extractor in extractors:
         if not Einf.GotValuesForDate(data[0],extractor.measurementName,extractor.name):
             message = "Inserted data for: {}".format(data[0]['tags']['Metering date'])
             try:
-                Einf.Client.write_points(data)
+                Einf.Client.write_points(data, retention_policy=options['db_retention_policy'])
             except:
                 e = exc_info()[0]
                 message = "Inserted data for: {}".format(data[0]['tags']['Metering date'])

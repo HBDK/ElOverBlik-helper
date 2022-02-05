@@ -2,9 +2,10 @@ from logging import warning, info
 
 class Einfluxer:
 
-    def __init__(self, client, database):
+    def __init__(self, client, database, retentionPolicy):
         self.Client = client
         self.Database = database
+        self.retentionPolicy = retentionPolicy
 
         if not self.DbExsist(self.Database):
             self.CreateDb()
@@ -22,6 +23,6 @@ class Einfluxer:
         self.Client.create_database(self.Database)
     
     def GotValuesForDate(self, data, measurementName, name):
-        query = 'SELECT last("value") FROM "' + self.Database + '"."autogen"."'+ measurementName +'" WHERE ("metering_date" = \'' + data["tags"]["metering_date"] + '\' AND ("Name" = \'' + name + '\' OR "Name" = \'\')) GROUP BY "Name"'
+        query = 'SELECT last("value") FROM "' + self.Database + '"."' + self.retentionPolicy + '"."'+ measurementName +'" WHERE ("metering_date" = \'' + data["tags"]["metering_date"] + '\' AND ("Name" = \'' + name + '\' OR "Name" = \'\')) GROUP BY "Name"'
         result = self.Client.query(query)
         return len(result.raw['series']) > 0
